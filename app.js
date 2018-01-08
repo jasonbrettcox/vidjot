@@ -1,6 +1,17 @@
 const express = require ('express');
-const app = express();
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+
+const app = express();
+//map global promise, get rid of deprecation warning
+mongoose.promise = golbal.promise
+
+//connect to mongoose
+mongoose.connect('mongodb://localhost/vidjot-dev', {
+    useMongoClient : true
+})
+.then(()=> console.log('mongoDB connected...'))
+.catch(err => console.log(err));
 
 
 //handlebars middleware
